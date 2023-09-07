@@ -35,24 +35,29 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
+
+      // FireBase Logic goes here
       const auth = getAuth();
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
-
+      
+      // Updating the user info with value from the input field
       updateProfile(auth.currentUser, {
         displayName: name,
       });
       const user = userCredential.user;
-    
+      // Spreading the value from the inpu field
       const formDataCopy = { ...formData };
+      // Removing the password to save in DB for security reasons
       delete formDataCopy.password;
       formDataCopy.timestamp = serverTimestamp();
 
+      // Adding user to  database
       await setDoc(doc(db, "users", user.uid), formDataCopy);
-      toast.success('Sign up was successful ')
+      toast.success("Sign up was successful ");
       navigate("/");
     } catch (error) {
       toast.error("something went wrong with the registration");
