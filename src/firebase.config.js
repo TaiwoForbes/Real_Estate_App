@@ -11,13 +11,12 @@ import {getFirestore} from 'firebase/firestore'
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCd_Ud73B83eUpyJLUQbMJ5kcqFqjxVIaU",
-  authDomain: "real-estate-app-933e5.firebaseapp.com",
-  projectId: "real-estate-app-933e5",
-  storageBucket: "real-estate-app-933e5.appspot.com",
-  messagingSenderId: "1092453591973",
-  appId: "1:1092453591973:web:b88ecf098305e2f2fad64c",
-  measurementId: "G-2Q2YST0TG3"
+  apiKey: "AIzaSyCunSOhG4Icwr8KgnMqQTvPo8dEDNt7taI",
+  authDomain: "realtor-v2.firebaseapp.com",
+  projectId: "realtor-v2",
+  storageBucket: "realtor-v2.appspot.com",
+  messagingSenderId: "500715795070",
+  appId: "1:500715795070:web:ba2009226b783cf6825e2f"
 };
 
 // Initialize Firebase
