@@ -15,8 +15,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
 import "swiper/css/bundle";
+import { getAuth } from "firebase/auth";
+import Contact from "../components/Contact";
 
 const Listing = () => {
+  const auth = getAuth();
+  const [contactLandlord, setContactLandlord] = useState(false);
   const [link, setLink] = useState(false);
   const params = useParams();
   const [listing, setListing] = useState(null);
@@ -81,7 +85,7 @@ const Listing = () => {
       )}
 
       <div className="flex flex-col md:flex-row m-4 max-w-6xl lg:mx-auto p-4 rounded-lg shadow-lg bg-white lg:space-x-5">
-        <div className=" w-full h-[200px] lg:h-[400px] ">
+        <div className=" w-full  ">
           <p className="text-2xl font-bold mb-3 text-blue-900">
             {listing.name} - $
             {listing.offer
@@ -117,7 +121,7 @@ const Listing = () => {
             <span className="font-semibold ">Description - </span>
             {listing.description}
           </p>
-          <ul className="flex items-center gap-2 text-sm font-semibold lg:space-x-10">
+          <ul className="flex items-center gap-2 text-sm font-semibold lg:space-x-10 mb-6">
             <li className="flex ">
               <FaBed className="text-lg mr-1 items-center whitespace-nowrap" />
               {+listing.bedrooms > 1 ? `${listing.bedrooms} Beds` : "1 Bed"}
@@ -135,6 +139,19 @@ const Listing = () => {
               {listing.furnished ? "Furnished" : "Not Furnished"}
             </li>
           </ul>
+          {listing.userRef !== auth.currentUser?.uid && !contactLandlord && (
+            <div className="mt-6">
+              <button
+                onClick={() => setContactLandlord(true)}
+                className="px-7 py-3 bg-blue-600 text-white font-medium text-sm uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg w-full text-center transition duration-150 ease-in-out"
+              >
+                Contact LandLord
+              </button>
+            </div>
+          )}
+          {contactLandlord && (
+            <Contact  userRef={listing.userRef} listing={listing} />
+          )}
         </div>
 
         <div className="bg-blue-300 w-full h-[200px] lg:h-[400px] z-10 overflow-x-hidden "></div>
