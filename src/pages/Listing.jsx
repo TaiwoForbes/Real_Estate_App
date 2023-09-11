@@ -1,5 +1,12 @@
 import { doc, getDoc } from "firebase/firestore";
-import { FaShare, FaMapMarkerAlt,FaBed,FaBath, FaParking,FaChair } from "react-icons/fa";
+import {
+  FaShare,
+  FaMapMarkerAlt,
+  FaBed,
+  FaBath,
+  FaParking,
+  FaChair,
+} from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../firebase.config";
@@ -91,35 +98,41 @@ const Listing = () => {
             {listing.address}
           </p>
           <div className="flex justify-start items-center space-x-4 w-[75%]">
-            <p className="bg-red-800 w-full max-w-[200px] rounded-md p-1 text-white text-center font-semibold shadow-md ">{listing.type === "rent" ? "Rent" : "Sale"}</p>
+            <p className="bg-red-800 w-full max-w-[200px] rounded-md p-1 text-white text-center font-semibold shadow-md ">
+              {listing.type === "rent" ? "Rent" : "Sale"}
+            </p>
             <p>
               {listing.offer && (
                 <p className="w-full max-w-[200px] bg-green-800 rounded-md p-1 text-white text-center font-semibold shadow-md">
                   $
                   {(+listing.regularPrice - +listing.discountedPrice)
                     .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")} discount
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+                  discount
                 </p>
               )}
             </p>
           </div>
-          <p className="mt-3 mb-3 "><span className="font-semibold ">Description - </span>{listing.description}</p>
+          <p className="mt-3 mb-3 ">
+            <span className="font-semibold ">Description - </span>
+            {listing.description}
+          </p>
           <ul className="flex items-center gap-2 text-sm font-semibold lg:space-x-10">
             <li className="flex ">
-                <FaBed className="text-lg mr-1 items-center whitespace-nowrap"/>
-                {+listing.bedrooms > 1 ? `${listing.bedrooms} Beds`: '1 Bed' }
+              <FaBed className="text-lg mr-1 items-center whitespace-nowrap" />
+              {+listing.bedrooms > 1 ? `${listing.bedrooms} Beds` : "1 Bed"}
             </li>
             <li className="flex ">
-                <FaBath className="text-lg mr-1 items-center whitespace-nowrap"/>
-                {+listing.bathrooms > 1 ? `${listing.bathrooms} Bath`: '1 Bath' }
+              <FaBath className="text-lg mr-1 items-center whitespace-nowrap" />
+              {+listing.bathrooms > 1 ? `${listing.bathrooms} Bath` : "1 Bath"}
             </li>
             <li className="flex ">
-                <FaParking className="text-lg mr-1 items-center whitespace-nowrap"/>
-                {listing.parking ? 'Parking Spot' : 'No Parking' }
+              <FaParking className="text-lg mr-1 items-center whitespace-nowrap" />
+              {listing.parking ? "Parking Spot" : "No Parking"}
             </li>
             <li className="flex ">
-                <FaChair className="text-lg mr-1 items-center whitespace-nowrap"/>
-                {listing.furnished ? 'Furnished' : 'Not Furnished' }
+              <FaChair className="text-lg mr-1 items-center whitespace-nowrap" />
+              {listing.furnished ? "Furnished" : "Not Furnished"}
             </li>
           </ul>
         </div>
