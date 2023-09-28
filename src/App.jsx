@@ -18,6 +18,7 @@ import Listing from "./pages/Listing";
 import Category from "./pages/Category";
 
 const App = () => {
+ 
   return (
     <div>
       <BrowserRouter>

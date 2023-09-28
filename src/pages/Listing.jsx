@@ -20,6 +20,7 @@ import Contact from "../components/Contact";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
 const Listing = () => {
+
   const auth = getAuth();
   const [contactLandlord, setContactLandlord] = useState(false);
   const [link, setLink] = useState(false);

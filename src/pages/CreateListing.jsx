@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import Spiner from "../components/Spiner";
 
 export default function CreateListing() {
+  console.log(import.meta.env.VITE_REACT_APP_RAPID_API_KEY);
   const navigate = useNavigate();
   const auth = getAuth();
   const [geolocationEnabled, setGeolocationEnabled] = useState(true);
@@ -94,7 +95,7 @@ export default function CreateListing() {
           method: "GET",
           headers: {
             "X-RapidAPI-Key":
-              "60953b1bf4msh44dc4ae002a0abap140fe1jsn78be437b6f4d",
+            import.meta.env.VITE_REACT_APP_RAPID_API_KEY,
             "X-RapidAPI-Host":
               "address-from-to-latitude-longitude.p.rapidapi.com",
           },
