@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
 import { db } from "../firebase.config";
 import Spiner from "../components/Spiner";
@@ -12,6 +12,8 @@ const Slider = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   SwiperCore.use((Autoplay, Navigation, Pagination));
+  
+  
   useEffect(() => {
     const fetchListings = async () => {
       const listingsRef = collection(db, "listings");
@@ -43,8 +45,15 @@ const Slider = () => {
           navigation
           pagination={{ type: "progressbar" }}
           effect="fade"
-          modules={[EffectFade]}
-          autoplay={{ delay: 3000 }}
+          modules={[EffectFade,Autoplay, Pagination, Navigation]}
+          
+          spaceBetween={30}
+          centeredSlides={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          className="mySwiper"
         >
           {listings.map(({ data, id }) => (
             <SwiperSlide
@@ -68,7 +77,7 @@ const Slider = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-      </> 
+      </>
     )
   );
 };
