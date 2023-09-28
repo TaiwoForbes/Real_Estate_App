@@ -49,7 +49,7 @@ const SignUp = () => {
         displayName: name,
       });
       const user = userCredential.user;
-      // Spreading the value from the inpu field
+      // Spreading the value from the input field
       const formDataCopy = { ...formData };
       // Removing the password to save in DB for security reasons
       delete formDataCopy.password;

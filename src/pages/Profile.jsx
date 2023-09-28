@@ -56,7 +56,7 @@ const Profile = () => {
         //  Update the name in the fireStore
         const docRef = doc(db, "user", auth.currentUser.uid);
         await updateDoc(docRef, {
-          name, // name: name
+          name, // an es6 version of sayinhg name: name
         });
       }
       toast.success("profile details updated");
