@@ -50,7 +50,7 @@ const Listing = () => {
         navigation
         pagination={{ type: "progressbar" }}
         effect="fade"
-        modules={[EffectFade]}
+        modules={[EffectFade, Autoplay, Pagination, Navigation]}
         autoplay={{ delay: 300 }}
       >
         {listing.imgUrls.map((url, index) => {
