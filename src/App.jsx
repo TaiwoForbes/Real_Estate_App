@@ -10,12 +10,14 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import ForgotPassword from "./pages/ForgotPassword";
 import Offers from "./pages/Offers";
-import Header from "./components/Header";
+import Header from "./components/Navigation/Header";
 import PrivateRoute from "./components/PrivateRoute";
 import CreateListing from "./pages/CreateListing";
 import EditListing from "./pages/EditListing";
 import Listing from "./pages/Listing";
 import Category from "./pages/Category";
+import Submenu from "./components/Navigation/Submenu";
+import SideBar from "./components/Navigation/SideBar";
 
 const App = () => {
  
@@ -23,6 +25,8 @@ const App = () => {
     <div>
       <BrowserRouter>
         <Header />
+       <Submenu/>
+       <SideBar/>
         <Routes>
           <Route path="/" element={<Home />} />
 

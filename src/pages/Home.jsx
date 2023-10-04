@@ -11,10 +11,13 @@ import {
 import { db } from "../firebase.config";
 import { Link } from "react-router-dom";
 import ListingItem from "../components/ListingItem";
+import { useGlobalContext } from "../components/Navigation/context";
 
 const Home = () => {
+  const {closeSubmenu} = useGlobalContext()
   // Offers
   const [offerListings, setOfferListings] = useState(null);
+
   useEffect(() => {
     const fetchListings = async () => {
       try {
@@ -99,8 +102,10 @@ const Home = () => {
     fetchListings();
   }, []);
   return (
-    <div>
+    <div onMouseOver={closeSubmenu}>
       <Slider />
+
+      <h1>Discover how we can help</h1>
       <div className="max-w-6xl mx-auto pt-4 space-y-6">
         {offerListings && offerListings.length > 0 && (
           <div className="m-2 mb-6">
@@ -124,6 +129,7 @@ const Home = () => {
           </div>
         )}
 
+<Link>Buying</Link>
         {rentListings && rentListings.length > 0 && (
           <div className="m-2 mb-6">
             <h2 className="px-3 text-2xl mt-6 font-semibold">
