@@ -21,9 +21,9 @@ const sublinks = [
   {
     page: 'Rent',
     links: [
-      { label: 'List Rentals', icon: <FaBriefcase />, url: '/category/rent' },
-      { label: 'Manage rentals', icon: <FaBriefcase />, url: '/create-listing' },
-      { label: 'Create a lease', icon: <FaBriefcase />, url: '/create-listing' },
+      { label: 'Rentals', icon: <FaBriefcase />, url: '/category/rent' },
+      { label: 'Manage', icon: <FaBriefcase />, url: '/create-listing' },
+      { label: 'Lease', icon: <FaBriefcase />, url: '/create-listing' },
     ],
   },
 ];

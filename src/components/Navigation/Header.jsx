@@ -45,7 +45,7 @@ const Header = () => {
     <>
       <div className="bg-white border-b shadow-sm sticky top-0 z-40">
         <header className="flex justify-between items-center px-3 max-w-7xl mx-auto ">
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button className="btn toggle-btn" onClick={openSidebar}>
               <FaBars />
             </button>
@@ -57,11 +57,11 @@ const Header = () => {
             </div>
           </Link>
 
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <ul className="flex space-x-10 ">
               <li
                 className={`cursor-pointer py-3 text-sm font-semibold text-grey-400 border-b-[3px] border-b-transparent ${
-                  pathMatchRoutes("/") && "text-black border-b-red-500"
+                  pathMatchRoutes("/") && "text-blac k border-b-red-500"
                 }`}
                 onClick={() => {
                   navigate("/");
